@@ -1,0 +1,160 @@
+﻿@model AgenziaMVC.Models.ImmobiliModel
+
+   
+
+    @using (Html.BeginForm("Crea","Immobili", FormMethod.Post)) 
+{
+    List<SelectListItem> listItems = new List<SelectListItem>();
+    listItems.Add(new SelectListItem
+    {
+        Text = "Annesso Agricolo",
+        Value = "AnnessiAgricoli"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Attività Commerciale",
+        Value = "AttivitaCommerciali"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Azienda Agricola",
+        Value = "AziendeAgricole"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Appartamento",
+        Value = "Appartamenti"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Cantina",
+        Value = "Magazzini",
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Casa",
+        Value = "Case"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Casale",
+        Value = "Casali"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Capannone Artigianale",
+        Value = "CapannoniArtigianali"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Magazzino",
+        Value = "Magazzini",
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Negozio",
+        Value = "Negozi",
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Terreno",
+        Value = "Terreni",
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Villa",
+        Value = "Ville"
+    });
+
+
+    List<SelectListItem> listItemsPosizione = new List<SelectListItem>();
+    listItemsPosizione.Add(new SelectListItem
+    {
+        Text = "Centro",
+        Value = "Centro"
+    });
+    listItemsPosizione.Add(new SelectListItem
+    {
+        Text = "Campagna",
+        Value = "Campagna",
+    });
+    listItemsPosizione.Add(new SelectListItem
+    {
+        Text = "Zona Nuova",
+        Value = "ZonaNuova"
+    });
+    listItemsPosizione.Add(new SelectListItem
+    {
+        Text = "Altri Comuni",
+        Value = "Altro"
+    });
+    @Html.AntiForgeryToken()
+        <div class="container" style="background-color:whitesmoke; margin-top:120px">
+            <div class="form-horizontal">
+                <h4>ImmobiliModel</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Descrizione, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Descrizione, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Descrizione, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Mq, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Mq, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Mq, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TipoImmobile, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.TipoImmobile, listItems, "-- Tipo Immobile --", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.TipoImmobile, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Prezzo, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Prezzo, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Prezzo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Posizione, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model=>model.Posizione, listItemsPosizione, "-- Posizione --", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Posizione, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+            <div class="container" style="background-color:whitesmoke">
+                @Html.ActionLink("Torna alla lista", "Immobili", "Immobili", new { @class = "btn btn-primary" })
+            </div>
+          
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+            }

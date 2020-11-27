@@ -1,0 +1,38 @@
+﻿@model AgenziaMVC.Models.ChiSiamoModel
+
+@{
+    ViewBag.Title = "ChiSiamo";
+}
+@if (Model != null)
+{
+
+    var imgSrc = String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(Model.ImgBytes));
+
+
+    <div class="container" style="background-color:whitesmoke;margin-top:120px;">
+        <div class="row">
+            <h4></h4>
+            <hr/>
+            <div class="col-md-8 img-responsive">
+            <h3>@Html.DisplayFor(model => model.Name)</h3>
+            <hr/>
+                <p style="line-height: 2.5">
+                    @Html.DisplayFor(model => model.TextBefore)
+                </p>
+                <br/>
+                <p style="line-height: 2.5">
+                    @Html.DisplayFor(model => model.TextAfter)
+                </p>
+                <br/>
+                <p style="line-height: 2.5; font-weight: bold" >
+                    @Html.DisplayFor(model => model.TextFinally)
+                </p>
+            </div>
+            <div class="col-md-4 img-responsive">
+                <div class="thumbnailOver">
+                    <img src="@imgSrc" alt="Leone" class="img-responsive" style="display: block"/>
+                </div>
+            </div>
+        </div>
+    </div>
+}

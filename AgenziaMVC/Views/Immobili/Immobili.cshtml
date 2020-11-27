@@ -1,0 +1,79 @@
+﻿@model IEnumerable<AgenziaMVC.Models.ImmobiliModel>
+
+@{
+    ViewBag.Title = "Immobili";
+}
+<div class="container" style="background-color:whitesmoke;margin-top:120px;">
+    <h2>Immobili</h2>
+
+    <h4>@Html.ActionLink("Inserisci Immobile", "DisplayInsert","" ,new { @class = "btn btn-default" })</h4>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>   
+            <th>
+                @Html.DisplayNameFor(model => model.Descrizione)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mq)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prezzo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoImmobile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Posizione)
+            </th>
+            <th>Modifica</th>
+            <th>Elimina</th>
+            <th>Carica Foto</th>
+
+        </tr>
+
+        @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descrizione)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mq)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prezzo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoImmobile)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Posizione)
+        </td>
+
+        <td>
+
+            @Html.ActionLink("Modifica", "Edit", new {id = item.Id}, new { @class = "btn btn-default" })
+        </td>
+        <td>
+            @*@Html.ActionLink("Aggiungi Foto", "AggiungiFoto", new {id = item.Id})*@
+            @Html.ActionLink("Elimina", "Delete", new {id = item.Id}, new { @class = "btn btn-default" })
+        </td>
+
+        <td>
+            @using (Html.BeginForm("AggiungiFoto", "Immobili", new {id = item.Id}, FormMethod.Post, new {enctype = "multipart/form-data"}))
+                {
+                <label for="file">Aggiungi Foto:</label>
+                <input class="btn btn-default" type="file" name="file" multiple />
+                <input type="submit" value="Carica Foto" class="submit btn btn-default" />
+                }
+        </td>
+
+    </tr>
+    }
+    </table>
+</div>

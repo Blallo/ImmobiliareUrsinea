@@ -1,0 +1,109 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-top: 5px;
+    /*padding-right: 15px;*/
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.fill {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.container-full {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.captionOver {
+    position: absolute;
+    top: 20%;
+    left: 5%;
+  /*  transform: translate( 50%, 50% );*/
+    text-align: left;
+    color: white;
+    font-weight: bold;
+}
+
+.thumbnail {
+    position: relative;
+    display: inline-block;
+}
+.map {
+    width: 100%;
+    height: 400px;
+    background-color: grey;
+}
+
+.map-responsive{
+    overflow:hidden;
+    padding-bottom:100%;
+    position:relative;
+    height:0;
+}
+.map-responsive iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+}
+a, u {
+    text-decoration: none;
+    color: black;
+}
+@media screen and (min-width : 1024px) {
+    .modal-full {
+      width:50%;
+    }
+    .modal-full .modal-body{
+        max-height:750px;
+    }
+}
+        @media screen and (min-width : 768px) and (max-width : 1023px){
+.modal-full .modal-content {
+    min-height: 100vh;
+}
+        .modal-full {
+    min-width: 100%;
+    margin: 0;
+}
+}
+
+/*### Smartphones (portrait and landscape)(small)### */
+@media screen and (min-width : 0px) and (max-width : 767px){
+.modal-full .modal-content {
+    min-height: 100vh;
+}
+        .modal-full {
+    min-width: 100%;
+    margin: 0;
+}
+
+}
+
+
+

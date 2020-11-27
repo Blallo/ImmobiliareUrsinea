@@ -1,0 +1,376 @@
+﻿@model IEnumerable<AgenziaMVC.Models.RicercaImmobiliModel>
+
+
+@{
+    ViewBag.Title = "RicercaImmobili";
+}
+
+
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+
+
+@{
+    List<SelectListItem> listItems = new List<SelectListItem>();
+    listItems.Add(new SelectListItem
+    {
+        Text = "Annessi Agricoli",
+        Value = "AnnessiAgricoli"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Attività Commerciali",
+        Value = "AttivitaCommerciali"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Aziende Agricole",
+        Value = "AziendeAgricole"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Appartamenti",
+        Value = "Appartamenti"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Cantine",
+        Value = "Magazzini",
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Case",
+        Value = "Case"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Casali",
+        Value = "Casali"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Capannoni Artigianali",
+        Value = "CapannoniArtigianali"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Magazzini",
+        Value = "Magazzini",
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Negozi",
+        Value = "Negozi",
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Terreni",
+        Value = "Terreni",
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Ville",
+        Value = "Ville"
+    });
+
+
+    List<SelectListItem> listItemsPosizione = new List<SelectListItem>();
+    listItemsPosizione.Add(new SelectListItem
+    {
+        Text = "Centro",
+        Value = "Centro"
+    });
+    listItemsPosizione.Add(new SelectListItem
+    {
+        Text = "Campagna",
+        Value = "Campagna",
+    });
+    listItemsPosizione.Add(new SelectListItem
+    {
+        Text = "Zona Nuova",
+        Value = "ZonaNuova"
+    });
+    listItemsPosizione.Add(new SelectListItem
+    {
+        Text = "Altri Comuni",
+        Value = "Altro"
+    });
+
+    List<SelectListItem> listItemsMq = new List<SelectListItem>();
+    listItemsMq.Add(new SelectListItem
+    {
+        Text = "<50",
+        Value = "100"
+    });
+    listItemsMq.Add(new SelectListItem
+    {
+        Text = "<100",
+        Value = "100"
+    });
+    listItemsMq.Add(new SelectListItem
+    {
+        Text = "<150",
+        Value = "150",
+    });
+    listItemsMq.Add(new SelectListItem
+    {
+        Text = "<200",
+        Value = "Villa"
+    });
+}
+<div class="container" style="background-color:whitesmoke;margin-top:120px;">
+    @using (Html.BeginForm("RicercaImmobili", "RicercaImmobili", FormMethod.Post, new { enctype = "multipart/form-data" ,id="formsubmit"}))
+    {
+
+        <div class="row">
+            <div class="col-md-4">
+                @Html.Label("Tipo Immobile")
+                @Html.DropDownList("TipoImmobile", listItems, "-- Tipo Immobile --", new { @class = "form-control" })
+            </div>
+            <div class="col-md-4">
+                @Html.Label("Posizione")
+                @Html.DropDownList("Posizione", listItemsPosizione, "-- Posizione --", new { @class = "form-control" })
+            </div>
+            <div class="col-md-4">
+                @Html.Label("Mq")
+                @Html.DropDownList("Mq", listItemsMq, "-- Mq --", new { @class = "form-control" })
+            </div>
+            <div class="col-md-4 col-md-offset-6">
+                <input type="submit" value="cerca" />
+            </div>
+        </div>
+    }
+    <hr />
+
+    @if (Model != null)
+    {
+
+        string valuta = "€";
+        string riferimento = "Rif.";
+        foreach (var item in Model)
+        {
+            <div class="row">
+              
+                <div class="col-md-12">
+                  
+                 
+
+                        @*<ul class="carousel-indicators">
+                                <li data-target="#carousel_@item.Id" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel_@item.Id" data-slide-to="1"></li>
+                                <li data-target="#carousel_@item.Id" data-slide-to="2"></li>
+                            </ul>*@
+                      
+                            @{ int i = 0; }
+                      
+                      
+                      
+                
+                
+                    <div class="table-responsive">
+                        <table class="table table-dark">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th></th>
+                                    <th scope="col">
+                                        @*@Html.Label("Rif")*@
+                                    </th>
+                                    <th scope="col">
+                                        @Html.DisplayFor(modelItem => item.Nome)
+                                    </th>
+                                    <th scope="col">
+                                        @Html.Label("MQ")
+                                    </th>
+                                    <th scope="col">
+                                        @Html.Label("Tipo Immobile")
+                                    </th>
+                                    <th scope="col">
+                                        @Html.Label("Posizione")
+                                    </th>
+                                    <th scope="col">
+                                        @Html.Label("Prezzo")
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tr>
+                                <td scope="row">     
+                                                
+                                    <img src='@Url.Action("ImageGenerate", "RicercaImmobili", new { id = item.Id })' style="height:150px;width:160px" class="img-rounded" alt="@item.Nome" onclick="GetPhoto('@item.Id')" />
+                                </td>
+                                <td scope="row"></td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.Descrizione)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.Mq)
+                                </td>
+                                <td scope="row">
+                                    @Html.DisplayFor(modelItem => item.TipoImmobile)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Posizione)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Prezzo)
+                                </td>
+                                <td><button onclick="GetPhoto('@item.Id')" class="btn btn-primary" style="margin-bottom:20px;">Vedi Foto</button></td>
+                                @*<td>
+                        @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+                    </td>*@
+                            </tr>
+
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+                <hr />
+                                    }
+                                }
+
+</div>
+<div class="modal fade" id="photos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-full" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" style="font-size:20px;">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="">
+                <div class="col-md-12">
+                    <div id="carousel_photo" class="carousel slide">
+
+                        @*<ul class="carousel-indicators">
+                    <li data-target="#carousel_@item.Id" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel_@item.Id" data-slide-to="1"></li>
+                    <li data-target="#carousel_@item.Id" data-slide-to="2"></li>
+                </ul>*@
+                        <div class="carousel-inner" role="listbox" id="innerPhoto">
+
+
+                        </div>
+                        <div class="row">
+                            <div class="overlay" onclick="previous()">
+                                <a href="#" class="iconLeft" title="Precedente">
+                                    <i class="fa fa-chevron-circle-left"></i>
+                                </a>
+                            </div>
+                            <div class="overlay pull-right" onclick="next()">
+                                <a href="#" class="iconRight" title="Successiva">
+                                    <i class="fa fa-chevron-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-action" data-dismiss="modal">Chiudi</button>
+            </div>
+        </div>
+    </div>
+</div>
+  
+
+
+
+    @section Scripts
+{
+        <script type="text/javascript">
+            var j;
+            $(document).ready(function () {
+                j = 0;
+                $("#formsubmit").submit(function () {
+                    $("#modalLoadingClienti").modal('show');
+                });
+            });
+
+            $("#formsubmit").bind('ajax:complete', function () {
+
+                $("#modalLoadingClienti").modal('hide');
+
+
+            });
+            function GetPhoto(Id) {
+                $(".carousel").carousel('pause');
+                $("#modalLoadingClienti").modal('show');
+                $("#innerPhoto").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: "@Url.Action("GetPhoto", "RicercaImmobili")",
+                    data: {id: Id },
+                    success: function (result) {
+                        var data1 = result;
+                        var i=0;
+                        $.each(result.data, function (index, value) {
+                            var active="active";
+                            if(i>0)
+                                active="";
+                            var div = '<div class="item '+active+'">' +
+                                      '<img width="100%;" style="max-height:700px;object-fit:cover" src="data:image/png;base64,' + value + '" />' +
+                                   
+                                     '</div>';
+                            i = i + 1;
+                            $("#innerPhoto").append(div);
+                        });
+                        slider();
+                        $("#photos").modal('toggle');
+                        $("#modalLoadingClienti").modal('hide');
+                },
+                error: function (result) {
+
+                }
+            });
+            }
+
+            function slider()
+            {
+                var divs = $("#innerPhoto >div");
+                $.each(divs, function (index, value)
+                {
+                    $(this).hide();
+                })
+                $("#innerPhoto >div").filter('.active').fadeIn("slow");
+            }
+            function next()
+            {
+                var divs = $("#innerPhoto >div");
+                var currentDiv = $("#innerPhoto >div").filter('.active');
+                if (currentDiv.next().length == 0)
+                    $(divs[0]).addClass('active').fadeIn("slow");
+                else {
+
+                    currentDiv.next().addClass('active').fadeIn("slow")
+                }
+                currentDiv.removeClass('active').hide();
+              
+             
+            }
+            function previous()
+            {
+                var divs = $("#innerPhoto >div");
+                var currentDiv = $("#innerPhoto >div").filter('.active');
+                if (currentDiv.prev().length == 0)
+                {
+                    $(divs[divs.length - 1]).addClass('active').fadeIn("slow");
+                 
+                }
+                else {
+
+                    currentDiv.prev().addClass('active').fadeIn("slow")
+                }
+                currentDiv.removeClass('active').hide();
+              
+            }
+        </script>
+    }
+
+
+
+

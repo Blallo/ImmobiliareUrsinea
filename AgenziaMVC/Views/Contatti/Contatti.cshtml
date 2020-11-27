@@ -1,0 +1,28 @@
+﻿@model AgenziaMVC.Models.ContattiModel
+@{
+    ViewBag.Title = "Contatti";
+}
+<div class="container" style="background-color:whitesmoke;margin-top:120px;">
+    <h4></h4>
+    <hr />
+    <div class="col-md-6">
+        <img src="~/Images/Shared/Contatti/Contatti.jpg" class="img-responsive img-rounded" />
+        <hr />
+        @if (Model != null)
+            {
+             <label>Maria Elena </label><i class="glyphicon glyphicon-earphone" style="margin-left:10px;margin-right:10px"></i> //@Html.DisplayNameFor(model => model.NumeroTelefono)
+                                                           <label> @Html.DisplayFor(model => model.NumeroTelefono) </label>
+                                                            <hr />
+             <label>Andrea </label><i class="glyphicon glyphicon-earphone" style="margin-left:10px;margin-right:10px"></i><label>328 / 0168435</label>
+             <hr />
+             <i class="glyphicon glyphicon-envelope"></i>//@Html.DisplayNameFor(model => model.Email)
+             <a href="mailto:info@ursineaimmobiliare.com">info@ursineaimmobiliare.com</a>
+             
+            <hr />
+        }
+    </div>
+    <div class="col-md-6 map-responsive" id="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2935.2720634734387!2d11.665348315464975!3d42.634391979169315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe582d0f4761616db!2sUrsinea%20Immobiliare!5e0!3m2!1sit!2sit!4v1604479304313!5m2!1sit!2sit" width="100%" height="600" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+      <!--<iframe width="100%" height="600" src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;coord=42.6344856,11.6700681&amp;q=Piazza%20Petruccioli%2C%2058%2C%20Pitigliano%2C%20GR+(My%20Business%20Name)&amp;ie=UTF8&amp;t=&amp;z=19&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"><a href="https://www.maps.ie/create-google-map/">Google map generator</a></iframe><br />-->
+    </div>
+</div>

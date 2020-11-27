@@ -1,0 +1,98 @@
+﻿@model AgenziaMVC.Models.ImmobiliModel
+@Styles.Render("~/Content/css")
+<div class="container">
+    <div>
+        <h4>Riepilogo Immobile</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Nome)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Nome)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Descrizione)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Descrizione)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Mq)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Mq)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TipoImmobile)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TipoImmobile)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Prezzo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Prezzo)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Posizione)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Posizione)
+            </dd>
+
+        </dl>
+    </div>
+    @if (Model != null)
+    {
+
+        <div class="row">
+            <div class="col-md-6">
+
+                    @*<ul class="carousel-indicators">
+                            <li data-target="#carousel_@item.Id" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel_@item.Id" data-slide-to="1"></li>
+                            <li data-target="#carousel_@item.Id" data-slide-to="2"></li>
+                        </ul>*@
+                    <div class="row" role="listbox">
+                        @{ int i = 0; }
+                        @if (Model.Picture != null)
+                        {
+
+                            foreach (var p in Model.Picture)
+                            {
+                                     var imgSrc = string.Join("data: image / jpg; base64", Convert.ToBase64String(p.image));
+                                    <div class="col-md-4">
+                                        <img src="@imgSrc" alt="@p.name" class="img-responsive" style="display: block; width: 100%"/>
+                                        <i class="glyphicon glyphicon-trash" style="z-index: 10; position: absolute; background-color: gainsboro; width: 85%; top: -10px"></i>
+                                    </div>
+                                }
+                        
+                        }
+                    </div>
+                </div>
+            </div>
+
+        <div>
+            @Html.ActionLink("Torna alla lista", "Immobili", "Immobili")
+        </div>
+                            }
+
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+}
+

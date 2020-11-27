@@ -1,0 +1,53 @@
+﻿@model AgenziaMVC.Models.IndexModel
+
+<div class="row" style="background-color: whitesmoke;margin-top:100px;">
+    @if (Model != null)
+    {
+        var imgSrc = String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(Model.DefaultImage));
+
+     
+
+        <div class="fill">
+            <div class="thumbnailOver">
+                <img src="@imgSrc" alt="@Model.DefaultImageName" class="img-responsive" style="display: block; width: 100%" />
+
+            </div>
+        </div>
+
+    }
+
+</div>
+<div class="container-full" style="background-color:whitesmoke;font-size:20px;">
+    <div class="container">
+        <div class="row">
+            <h3 style="text-decoration: underline;">Perchè Noi:</h3>
+            Per la nostra professionalità e competenza
+            <hr />
+            Perchè siamo sempre reperibili
+            <hr />
+            Perchè accompagniamo il cliente sino al rogito notarile
+            <hr />
+            Perchè ci avvaliamo di personale attento e qualificato
+            <hr />
+            Perchè pensiamo noi a nostre spese a pubblicizzare gli immobili oggetto della vendita
+            <hr />
+            Perchè la mediazione pari al 3%, per entrambe le parti, spetta solo se la vendita viene conclusa, in caso contrario nulla ci sarà dovuto.
+            <hr />
+        </div>
+        </div>
+    </div>
+<div class="container-full" style="background-color: black;font-size:20px;">
+    <div class="container">
+        <div class="row">
+            <h3 style="color: whitesmoke; text-decoration: underline; text-align: center">Perchè Pitigliano:</h3>
+            <p style="color: whitesmoke; line-height: 2.5">
+                PITIGLIANO
+                A chi vi giunge per la prima volta (dalla Maremma lungo la SS.74), Pitigliano si offre improvviso al colpo d'occhio del visitatore con una visione straordinaria ed assolutamente inaspettata. L'abitato a strapiombo sulla rupe di tufo da cui sorge come per magia, è incastonato in una mirabile scenografia di dirupi, piccole valli, verdi declini, torrentelli e cascate. Se si giunge di notte, allora l'abitato illuminato si staglia nel buio come sospeso nel tempo. Sulla rupe abitarono gli uomini dell'età del bronzo, poi gli etruschi, poi i romani. La Sinagoga, con il forno degli azzimi e gli altri locali annessi, videro il fiorire per oltre cinque secoli, di una Comunità ebraica, che ha caratterizzato Pitigliano - per questo detta la "piccola Gerusalemme" - per la sua vivacità economica e culturale, ma soprattutto per l'eccezionale esempio di convivenza fra ebrei e cristiani, consolidato nel corso dei secoli fino ai nostri tempi.
+                Ma gli aspetti più straordinari di Pitigliano sono costituiti dall'eccezionale compattezza dell'abitato con le sue case di tufo, i suoi vicoli, le sue forme popolari che sono il contesto ineliminabile degli stessi monumenti: dalla città sotterranea, che si spinge nelle viscere della rupe, con cunicoli, grotte, colombari, cantine, antiche abitazioni rupestri e che costituisce un ambiente misterioso e particolarissimo. Queste caratteristiche rendono Pitigliano un mondo fuori dal comune, inconsueto, eccezionale e tutto da scoprire.
+                <br/>
+                A.Biondi
+            </p>
+        </div>
+    </div>
+</div>
+
